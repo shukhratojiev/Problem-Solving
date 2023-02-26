@@ -1,0 +1,29 @@
+class Solution {
+    public String getHint(String secret, String guess) {
+
+        int[] charsGuess = new int[10];     
+        int[] charsSecret = new int[10];
+        int bull=0, cow=0;
+        
+        for(int i=0; i<secret.length(); i++){
+            if(secret.charAt(i) == guess.charAt(i)){
+                bull++;
+            }else{
+                charsSecret[secret.charAt(i) - 48]++;
+                charsGuess[guess.charAt(i) - 48]++;
+            }
+        }
+
+        for(int i=0; i<10; i++){
+            if(charsGuess[i] == 0){
+                continue;
+            }else if(charsSecret[i] >= charsGuess[i]){
+                cow+=charsGuess[i];
+            }else{
+                cow+=charsSecret[i];
+            }
+        }
+
+        return bull + "A" + cow + "B";
+    }
+}
