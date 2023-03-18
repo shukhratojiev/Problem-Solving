@@ -1,0 +1,10 @@
+class Solution {
+    public long coloredCells(int n) {
+        long sum = 1;
+        long num = n;
+    
+        sum = sum + 4L*(((num)*(num-1))/2);
+        
+        return sum;
+    }
+}
